@@ -54,7 +54,7 @@ function EmployeeTable() {
             </table>
             <div className={styles.pagination}>
                 <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
-                <span className={styles.pageNumber}>{currentPage}</span>
+                <button className={styles.pageNumber}>{currentPage}</button>
                 <button onClick={nextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>Next</button>
             </div>
         </div>

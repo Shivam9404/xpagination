@@ -66,13 +66,11 @@ th {
     transition: background 0.3s ease-in-out;
 }
 
-.pagination button:hover {
-    background-color: #76c376;
-}
+
 
 .pagination button:disabled,
 .pagination button.disabled {
-    background-color: #ccc;
+    background-color: #90EE90;
     cursor: not-allowed;
 }
 
