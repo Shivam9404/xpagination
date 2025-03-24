@@ -13,26 +13,23 @@ function EmployeeTable() {
             .catch(() => alert("Failed to fetch data"));
     }, []);
 
+    const totalPages = Math.ceil(data.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
     const nextPage = () => {
-        if (currentPage < Math.ceil(data.length / itemsPerPage)) {
-            setCurrentPage(currentPage + 1);
-        }
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
     };
 
     const prevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-        }
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
     };
 
     return (
         <div className={styles.container}>
             <h1>Employee Data Table</h1>
-            <table border="1">
+            <table className={styles.table}>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -54,8 +51,8 @@ function EmployeeTable() {
             </table>
             <div className={styles.pagination}>
                 <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
-                <button className={styles.pageNumber}>{currentPage}</button>
-                <button onClick={nextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>Next</button>
+                <button>{currentPage}</button>
+                <button onClick={nextPage} disabled={currentPage >= totalPages}>Next</button>
             </div>
         </div>
     );
